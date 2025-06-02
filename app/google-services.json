@@ -1,14 +1,14 @@
 {
   "project_info": {
-    "project_number": "332118012064",
-    "firebase_url": "https://laundry-b101b-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "project_id": "laundry-b101b",
-    "storage_bucket": "laundry-b101b.appspot.com"
+    "project_number": "376143231017",
+    "firebase_url": "https://new-laundry-80037-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "new-laundry-80037",
+    "storage_bucket": "new-laundry-80037.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:332118012064:android:d91cff0dacc8ecb5d059c5",
+        "mobilesdk_app_id": "1:376143231017:android:ccd6ea900dfc3e8f5e0438",
         "android_client_info": {
           "package_name": "com.febrianbayu.laundry"
         }
@@ -16,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDBGHeJIemz1uykWjuyZtoLo7gN_cSRf9c"
+          "current_key": "AIzaSyC7VqJuNrHbHbi4t6oJFtKrcWmcf6wueFY"
         }
       ],
       "services": {
