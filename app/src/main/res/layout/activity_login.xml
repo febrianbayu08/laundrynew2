@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bglogin"
+    android:id="@+id/main"
     android:padding="24dp">
 
     <!-- Container Box -->
     <LinearLayout
         android:id="@+id/loginContainer"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:paddingHorizontal="10dp"
         android:background="@drawable/bg_login_box"
         android:elevation="8dp"
         android:padding="24dp"
@@ -50,8 +52,8 @@
             android:id="@+id/editTextPhone"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:hint="No HP"
-            android:inputType="phone"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:background="@drawable/bg_edittext"
@@ -78,6 +80,15 @@
             android:backgroundTint="#10C185"
             android:textColor="@color/white"
             android:textAllCaps="false"/>
+        <!-- Tombol Register -->
+        <TextView
+            android:id="@+id/tv_register_prompt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_marginTop="16dp"
+            android:text="Belum punya akun? Daftar sekarang"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 
