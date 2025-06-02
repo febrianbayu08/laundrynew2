@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bayuu Laundry"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/tvCabang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Surakarta"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Transaction Info -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID Transaksi"
+                android:textSize="16sp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tvIdTransaksi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-OQBF4tpqCrkBn9I0zv"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tanggal"
+                android:textSize="16sp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tvTanggal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2025-05-14 07:47:17"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pesanan"
+                android:textSize="16sp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tvNamaPelanggan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bayu"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Karyawan"
+                android:textSize="16sp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tvNamaPegawai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bayu"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#CCCCCC" />
+
+        <!-- Main Service -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/tvNamaLayanan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cuci Setrika 5kg"
+                android:textSize="16sp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tvHargaLayanan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp40.000,00"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#CCCCCC" />
+
+        <!-- Additional Services -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rincian Tambahan"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvLayananTambahan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:nestedScrollingEnabled="false" />
+
+        <!-- Subtotal -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subtotal Tambahan"
+                android:textSize="16sp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tvSubtotalTambahan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp14.000,00"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#CCCCCC" />
+
+        <!-- Total -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Bayar"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tvTotalBayar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp54.000,00"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Action Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <Button
+                android:id="@+id/btnKirimWhatsapp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Kirim WhatsApp"
+                android:textAllCaps="false"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="#25D366" />
+
+            <Button
+                android:id="@+id/btnCetak"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cetak"
+                android:textAllCaps="false"
+                android:backgroundTint="#00B0FF" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSelesai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Selesai"
+            android:textAllCaps="false"
+            android:backgroundTint="#4CAF50"
+            android:layout_marginTop="8dp"
+            android:drawableStart="@drawable/ic_save_24"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

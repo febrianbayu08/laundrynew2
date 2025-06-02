@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.febrianbayu.layanan.TambahLayananActivity">
+
+    <TextView
+        android:id="@+id/tvlayananjudul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tambahlayanan"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginTop="50dp"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvlayanannama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/namalayanan"
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvlayananjudul"
+        tools:ignore="MissingConstraints,TextSizeCheck" />
+
+    <EditText
+        android:id="@+id/etlayanannama"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_edittext"
+        android:hint="@string/text_namalengkap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvlayanannama"
+        tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/tvlayananharga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/harga"
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etlayanannama"
+        tools:ignore="MissingConstraints,TextSizeCheck" />
+
+    <EditText
+        android:id="@+id/etlayananharga"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_edittext"
+        android:hint="@string/harga"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvlayananharga"
+        tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/tvlayanancabang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/text_cabang"
+        android:textSize="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etlayananharga"
+        tools:ignore="MissingConstraints,TextSizeCheck" />
+
+    <EditText
+        android:id="@+id/etlayanancabang"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_edittext"
+        android:hint="@string/text_cabang"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvlayanancabang"
+        tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/btlayanansimpan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_simpan"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etlayanancabang"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
