@@ -18,6 +18,8 @@ import com.febrianbayu.transaksi.DataTransaksiActivity
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
+import com.google.firebase.auth.FirebaseAuth
+
 
 class MainActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
@@ -25,15 +27,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        val currentUser = auth.currentUser
-        if (currentUser == null) {
-            // If no user is signed in, redirect to LoginActivity
-            val intent = Intent(this, LoginActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            finish()
-        }
-
+        auth = FirebaseAuth.getInstance()
+        
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -82,6 +77,18 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+    override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = auth.currentUser
+        if (currentUser == null) {
+            // If no user is signed in, redirect to LoginActivity
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
+        }
+    }
 
     private fun getGreetingMessage(): String {
         val currentTime = LocalTime.now()
@@ -98,4 +105,5 @@ class MainActivity : AppCompatActivity() {
         val formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy")
         return currentDate.format(formatter)
     }
+    
 }
