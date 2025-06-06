@@ -1,4 +1,5 @@
 package com.febrianbayu.pelanggan
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -19,10 +20,13 @@ class TambahPelangganActivity : AppCompatActivity() {
     lateinit var etNama: EditText
     lateinit var etAlamat: EditText
     lateinit var etNoHP: EditText
-    lateinit var etCabang: EditText
+    lateinit var tvCabangTerpilih: TextView
+    lateinit var btnPilihCabang: Button
     lateinit var btSimpan: Button
 
     var pelangganId: String? = null
+    private var selectedCabangId: String? = null
+    private val PICK_CABANG_REQUEST = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +39,8 @@ class TambahPelangganActivity : AppCompatActivity() {
             val nama = dataIntent.getStringExtra("namaPelanggan")
             val alamat = dataIntent.getStringExtra("alamatPelanggan")
             val noHp = dataIntent.getStringExtra("noHpPelanggan")
-            val cabang = dataIntent.getStringExtra("idCabang")
+            selectedCabangId = dataIntent.getStringExtra("idCabang")
+            tvCabangTerpilih.text = "ID Cabang: ${selectedCabangId ?: "Belum dipilih"}"
 
 
             if (pelangganId != null) {
@@ -44,7 +49,7 @@ class TambahPelangganActivity : AppCompatActivity() {
                 etNama.setText(nama)
                 etAlamat.setText(alamat)
                 etNoHP.setText(noHp)
-                etCabang.setText(cabang)
+                tvCabangTerpilih.setText(selectedCabangId)
             }
         }
         btSimpan.setOnClickListener{
@@ -57,13 +62,22 @@ class TambahPelangganActivity : AppCompatActivity() {
         }
     }
 
-
+    @Deprecated("This method has been deprecated in favor of using the Activity Result API")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PICK_CABANG_REQUEST && resultCode == RESULT_OK) {
+            selectedCabangId = data?.getStringExtra("idCabang")
+            val namaCabang = data?.getStringExtra("namaCabang")
+            tvCabangTerpilih.text = namaCabang ?: "Gagal memuat nama cabang"
+        }
+    }
     fun init(){
         tvJudul = findViewById(R.id.tvpelangganjudul)
         etNama = findViewById(R.id.etpelanggannama)
         etAlamat = findViewById(R.id.etpelangganalamat)
         etNoHP = findViewById(R.id.etpelanggannohp)
-        etCabang = findViewById(R.id.etpelanggancabang)
+        tvCabangTerpilih = findViewById(R.id.tv_cabang_terpilih)
+        btnPilihCabang = findViewById(R.id.btn_pilih_cabang)
         btSimpan = findViewById(R.id.btpelanggansimpan)
     }
 
@@ -71,7 +85,6 @@ class TambahPelangganActivity : AppCompatActivity() {
         val nama = etNama.text.toString()
         val alamat = etAlamat.text.toString()
         val noHp = etNoHP.text.toString()
-        val cabang = etCabang.text.toString()
 
         if (nama.isEmpty()) {
             etNama.error = this.getString(R.string.validasi_nama_pelanggan)
@@ -91,10 +104,8 @@ class TambahPelangganActivity : AppCompatActivity() {
             etNoHP.requestFocus()
             return
         }
-        if (cabang.isEmpty()) {
-            etCabang.error = this.getString(R.string.validasi_cabang_pelanggan)
-            Toast.makeText(this, this.getString(R.string.validasi_cabang_pelanggan),Toast.LENGTH_SHORT).show()
-            etCabang.requestFocus()
+        if (selectedCabangId.isNullOrEmpty()) {
+            Toast.makeText(this, "Silakan pilih cabang terlebih dahulu", Toast.LENGTH_SHORT).show()
             return
         }
         if (pelangganId == null) {
@@ -112,7 +123,7 @@ class TambahPelangganActivity : AppCompatActivity() {
             etNama.text.toString(),
             etAlamat.text.toString(),
             etNoHP.text.toString(),
-            etCabang.text.toString(),
+            tvCabangTerpilih.text.toString(),
         )
         pelangganBaru.setValue(data)
             .addOnSuccessListener {
@@ -136,7 +147,7 @@ class TambahPelangganActivity : AppCompatActivity() {
             "namaPelanggan" to etNama.text.toString(),
             "alamatPelanggan" to etAlamat.text.toString(),
             "noHPPelanggan" to etNoHP.text.toString(),
-            "idCabang" to etCabang.text.toString()
+            "idCabang" to selectedCabangId
         )
 
         myRef.child(pelangganId ?: "").updateChildren(dataUpdate)

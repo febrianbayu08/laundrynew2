@@ -34,12 +34,14 @@
 
     <EditText
         android:id="@+id/etpelanggannama"
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_edittext"
+        android:padding="15dp"
+        android:background="@drawable/bg_edittext"
         android:hint="@string/text_namalengkap"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvpelanggannama"
         tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
@@ -58,10 +60,12 @@
 
     <EditText
         android:id="@+id/etpelangganalamat"
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_edittext"
+        android:padding="15dp"
+        android:background="@drawable/bg_edittext"
+        android:layout_marginHorizontal="20dp"
         android:hint="@string/card_alamat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,41 +86,55 @@
 
     <EditText
         android:id="@+id/etpelanggannohp"
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_edittext"
+        android:padding="15dp"
+        android:background="@drawable/bg_edittext"
         android:hint="@string/card_nohp"
         android:inputType="phone"
         android:maxLength="14"
+        android:layout_marginHorizontal="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvpelanggannohp"
         tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
 
     <TextView
-        android:id="@+id/tvpelanggancabang"
+        android:id="@+id/label_cabang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Cabang"
+        android:layout_marginTop="16dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="40dp"
-        android:text="@string/card_cabang"
-        android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etpelanggannohp"
-        tools:ignore="MissingConstraints,TextSizeCheck" />
+        app:layout_constraintTop_toBottomOf="@id/etpelanggannohp"/>
 
-    <EditText
-        android:id="@+id/etpelanggancabang"
-        android:layout_width="350dp"
+    <TextView
+        android:id="@+id/tv_cabang_terpilih"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_edittext"
-        android:hint="@string/card_cabang"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Belum ada cabang dipilih"
+        android:textSize="16sp"
+        android:padding="16dp"
+        android:background="@drawable/bg_edittext"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvpelanggancabang"
-        tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/label_cabang"/>
+
+    <Button
+        android:id="@+id/btn_pilih_cabang"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Pilih Cabang"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_cabang_terpilih"/>
 
     <Button
         android:id="@+id/btpelanggansimpan"
@@ -128,7 +146,7 @@
         android:layout_marginEnd="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etpelanggancabang"
+        app:layout_constraintTop_toBottomOf="@id/btn_pilih_cabang"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

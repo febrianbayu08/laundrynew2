@@ -24,6 +24,9 @@
         android:theme="@style/Theme.Laundry"
         tools:targetApi="31">
         <activity
+            android:name="com.febrianbayu.cabang.PilihCabangActivity"
+            android:exported="false" />
+        <activity
             android:name=".DataAkunActivity"
             android:exported="false" />
         <activity

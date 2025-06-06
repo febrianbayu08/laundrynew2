@@ -23,7 +23,6 @@
             android:background="#9803F4"
             android:layout_marginBottom="4dp">
 
-            <!-- Label -->
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="40dp"
@@ -58,7 +57,6 @@
                 android:orientation="horizontal"
                 android:layout_marginBottom="4dp">
 
-                <!-- TextView Label -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -67,7 +65,6 @@
                     android:textStyle="bold"
                     android:layout_marginBottom="4dp"/>
 
-                <!-- TextView Nilai -->
                 <TextView
                     android:id="@+id/tvCARD_PEGAWAI_nama"
                     android:layout_width="wrap_content"
@@ -85,7 +82,6 @@
                 android:orientation="horizontal"
                 android:layout_marginBottom="4dp">
 
-                <!-- TextView Label -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -93,7 +89,6 @@
                     android:textSize="14sp"
                     android:layout_marginBottom="2dp"/>
 
-                <!-- TextView Nilai -->
                 <TextView
                     android:id="@+id/tvCARD_PEGAWAI_alamat"
                     android:layout_width="wrap_content"
@@ -110,7 +105,6 @@
                 android:orientation="horizontal"
                 android:layout_marginBottom="4dp">
 
-                <!-- TextView Label -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -118,7 +112,6 @@
                     android:textSize="14sp"
                     android:layout_marginBottom="2dp"/>
 
-                <!-- TextView Nilai -->
                 <TextView
                     android:id="@+id/tvCARD_PEGAWAI_nohp"
                     android:layout_width="wrap_content"
@@ -134,8 +127,28 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginBottom="4dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email :"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="2dp"/>
+                <TextView
+                    android:id="@+id/tvCARD_PEGAWAI_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:textSize="14sp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="2dp"/>
+            </LinearLayout>
 
-                <!-- TextView Label -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -143,7 +156,6 @@
                     android:textSize="14sp"
                     android:layout_marginBottom="8dp"/>
 
-                <!-- TextView Nilai -->
                 <TextView
                     android:id="@+id/tvCARD_PEGAWAI_cabang"
                     android:layout_width="wrap_content"
@@ -154,7 +166,6 @@
                     android:layout_marginBottom="8dp"/>
             </LinearLayout>
 
-            <!-- Tombol Aksi -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

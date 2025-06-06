@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.febrianbayu.modeldata.model_pegawai
-import com.febrianbayu.pelanggan.TambahPelangganActivity
+import com.febrianbayu.pegawai.TambahPegawaiActivity
 
 class AdapterDataPegawai(
     private val listPegawai: ArrayList<model_pegawai>) :
@@ -38,6 +38,7 @@ class AdapterDataPegawai(
         holder.tvCARD_PEGAWAI_NAMA.text = item.namaPegawai
         holder.tvCARD_PEGAWAI_ALAMAT.text = item.alamatPegawai
         holder.tvCARD_PEGAWAI_NOHP.text = item.noHPPegawai
+        holder.tvCARD_PEGAWAI_EMAIL.text = item.email
         holder.tvCARD_PEGAWAI_cabang.text = item.idCabang
 
         // Klik tombol lihat
@@ -56,6 +57,7 @@ class AdapterDataPegawai(
             val tvNama = dialogView.findViewById<TextView>(R.id.tvDIALOG_PEGAWAI_NAMA)
             val tvAlamat = dialogView.findViewById<TextView>(R.id.tvDIALOG_PEGAWAI_ALAMAT)
             val tvNoHP = dialogView.findViewById<TextView>(R.id.tvDIALOG_PEGAWAI_NOHP)
+            val tvEmail = dialogView.findViewById<TextView>(R.id.tvDIALOG_PEGAWAI_EMAIL)
             val tvCabang = dialogView.findViewById<TextView>(R.id.tvDIALOG_PEGAWAICABANG)
 
             val btEdit = dialogView.findViewById<Button>(R.id.btDIALOG_MOD_PEGAWAI_Edit)
@@ -66,14 +68,17 @@ class AdapterDataPegawai(
             tvNama?.text = item.namaPegawai
             tvAlamat?.text = item.alamatPegawai
             tvNoHP?.text = item.noHPPegawai
+            tvEmail?.text = item.email
             tvCabang?.text = item.idCabang // opsional
 
             btEdit?.setOnClickListener {
-                val intent = Intent(holder.itemView.context, TambahPelangganActivity::class.java)
-                intent.putExtra("idPelanggan", item.idPegawai)
-                intent.putExtra("namaPelanggan", item.namaPegawai)
-                intent.putExtra("alamatPelanggan", item.alamatPegawai)
-                intent.putExtra("noHpPelanggan", item.noHPPegawai)
+                val intent = Intent(holder.itemView.context, TambahPegawaiActivity::class.java)
+                intent.putExtra("idPegawai", item.idPegawai)
+                intent.putExtra("namaPegawai", item.namaPegawai)
+                intent.putExtra("alamatPegawai", item.alamatPegawai)
+                intent.putExtra("noHPPegawai", item.noHPPegawai)
+                intent.putExtra("emailPegawai", item.email)
+                intent.putExtra("passwordPegawai", item.password)
                 intent.putExtra("idCabang", item.idCabang)
                 holder.itemView.context.startActivity(intent)
                 alertDialog.dismiss()
@@ -85,7 +90,7 @@ class AdapterDataPegawai(
                     .setMessage("Yakin ingin menghapus data ini?")
                     .setPositiveButton("Ya") { _, _ ->
                         val dbRef = FirebaseDatabase.getInstance()
-                            .getReference("Pelanggan")
+                            .getReference("pegawai")
                             .child(item.idPegawai ?: "")
 
                         dbRef.removeValue().addOnSuccessListener {
@@ -118,6 +123,7 @@ class AdapterDataPegawai(
         val tvCARD_PEGAWAI_NAMA = itemView.findViewById<TextView>(R.id.tvCARD_PEGAWAI_nama)
         val tvCARD_PEGAWAI_ALAMAT = itemView.findViewById<TextView>(R.id.tvCARD_PEGAWAI_alamat)
         val tvCARD_PEGAWAI_NOHP = itemView.findViewById<TextView>(R.id.tvCARD_PEGAWAI_nohp)
+        val tvCARD_PEGAWAI_EMAIL = itemView.findViewById<TextView>(R.id.tvCARD_PEGAWAI_email)
         val tvCARD_PEGAWAI_cabang = itemView.findViewById<TextView>(R.id.tvCARD_PEGAWAI_cabang)
     }
 }

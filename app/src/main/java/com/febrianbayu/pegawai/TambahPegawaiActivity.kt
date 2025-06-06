@@ -1,4 +1,5 @@
 package com.febrianbayu.pegawai
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -8,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.febrianbayu.cabang.PilihCabangActivity
 import com.google.firebase.database.FirebaseDatabase
 import com.febrianbayu.laundry.R
 import com.febrianbayu.modeldata.model_pegawai
@@ -19,41 +21,59 @@ class TambahPegawaiActivity : AppCompatActivity() {
     lateinit var etNama: EditText
     lateinit var etAlamat: EditText
     lateinit var etNoHP: EditText
-    lateinit var etCabang: EditText
+    lateinit var etEmail: EditText
+    lateinit var etPassword: EditText
+    lateinit var tvCabangTerpilih: TextView
+    lateinit var btnPilihCabang: Button
     lateinit var btSimpan: Button
 
-    var pegawaiId: String? = ""
+    var pegawaiId: String? = null
+    private var selectedCabangId: String? = null
+    private val PICK_CABANG_REQUEST = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_tambah_pegawai)
         init()
+
         val dataIntent = intent
-        if (dataIntent != null) {
-            pegawaiId = dataIntent.getStringExtra("idPegawai")
-            val nama = dataIntent.getStringExtra("namaPegawai")
-            val alamat = dataIntent.getStringExtra("alamatPegawai")
-            val noHp = dataIntent.getStringExtra("noHpPegawai")
-            val cabang = dataIntent.getStringExtra("idCabang")
-
-
-            if (pegawaiId != null) {
-                tvJudul.text = "Edit Data Pegawai"
-                btSimpan.text = "Update"
-                etNama.setText(nama)
-                etAlamat.setText(alamat)
-                etNoHP.setText(noHp)
-                etCabang.setText(cabang)
-            }
+        pegawaiId = dataIntent.getStringExtra("idPegawai")
+        if (!pegawaiId.isNullOrEmpty()) {
+            tvJudul.text = "Edit Data Pegawai"
+            btSimpan.text = "Update"
+            etNama.setText(dataIntent.getStringExtra("namaPegawai"))
+            etAlamat.setText(dataIntent.getStringExtra("alamatPegawai"))
+            etNoHP.setText(dataIntent.getStringExtra("noHPPegawai"))
+            etEmail.setText(dataIntent.getStringExtra("emailPegawai"))
+            etPassword.setText(dataIntent.getStringExtra("passwordPegawai"))
+            selectedCabangId = dataIntent.getStringExtra("idCabang")
+            tvCabangTerpilih.text = "ID Cabang: ${selectedCabangId ?: "Belum dipilih"}"
         }
-        btSimpan.setOnClickListener{
+
+        btSimpan.setOnClickListener {
             cekValidasi()
         }
+
+        btnPilihCabang.setOnClickListener {
+            val intent = Intent(this, PilihCabangActivity::class.java)
+            startActivityForResult(intent, PICK_CABANG_REQUEST)
+        }
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+    }
+
+    @Deprecated("This method has been deprecated in favor of using the Activity Result API")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PICK_CABANG_REQUEST && resultCode == RESULT_OK) {
+            selectedCabangId = data?.getStringExtra("idCabang")
+            val namaCabang = data?.getStringExtra("namaCabang")
+            tvCabangTerpilih.text = namaCabang ?: "Gagal memuat nama cabang"
         }
     }
 
@@ -62,7 +82,10 @@ class TambahPegawaiActivity : AppCompatActivity() {
         etNama = findViewById(R.id.etpegawainama)
         etAlamat = findViewById(R.id.etpegawaialamat)
         etNoHP = findViewById(R.id.etpegawainohp)
-        etCabang = findViewById(R.id.etpegawaicabang)
+        etEmail = findViewById(R.id.etpegawaiemail)
+        etPassword = findViewById(R.id.etpegawaipassword)
+        tvCabangTerpilih = findViewById(R.id.tv_cabang_terpilih)
+        btnPilihCabang = findViewById(R.id.btn_pilih_cabang)
         btSimpan = findViewById(R.id.btpegawaisimpan)
     }
 
@@ -70,33 +93,20 @@ class TambahPegawaiActivity : AppCompatActivity() {
         val nama = etNama.text.toString()
         val alamat = etAlamat.text.toString()
         val noHp = etNoHP.text.toString()
-        val cabang = etCabang.text.toString()
+        val email = etEmail.text.toString()
+        val password = etPassword.text.toString()
 
-        if (nama.isEmpty()) {
-            etNama.error = this.getString(R.string.validasi_nama_pegawai)
-            Toast.makeText(this, this.getString(R.string.validasi_nama_pegawai),Toast.LENGTH_SHORT).show()
-            etNama.requestFocus()
+        if (nama.isEmpty() || alamat.isEmpty() || noHp.isEmpty() || email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Semua kolom harus diisi", Toast.LENGTH_SHORT).show()
             return
         }
-        if (alamat.isEmpty()) {
-            etAlamat.error = this.getString(R.string.validasi_alamat_pegawai)
-            Toast.makeText(this, this.getString(R.string.validasi_alamat_pegawai),Toast.LENGTH_SHORT).show()
-            etAlamat.requestFocus()
+
+        if (selectedCabangId.isNullOrEmpty()) {
+            Toast.makeText(this, "Silakan pilih cabang terlebih dahulu", Toast.LENGTH_SHORT).show()
             return
         }
-        if (noHp.isEmpty()) {
-            etNoHP.error = this.getString(R.string.validasi_nohp_pegawai)
-            Toast.makeText(this, this.getString(R.string.validasi_nohp_pegawai),Toast.LENGTH_SHORT).show()
-            etNoHP.requestFocus()
-            return
-        }
-        if (cabang.isEmpty()) {
-            etCabang.error = this.getString(R.string.validasi_cabang_pelanggan)
-            Toast.makeText(this, this.getString(R.string.validasi_cabang_pelanggan),Toast.LENGTH_SHORT).show()
-            etCabang.requestFocus()
-            return
-        }
-        if (pegawaiId == null) {
+
+        if (pegawaiId.isNullOrEmpty()) {
             simpan()
         } else {
             update()
@@ -105,49 +115,44 @@ class TambahPegawaiActivity : AppCompatActivity() {
 
     fun simpan() {
         val pegawaiBaru = myRef.push()
-        val pegawaiid = pegawaiBaru.key
+        val newPegawaiId = pegawaiBaru.key
         val data = model_pegawai(
-            pegawaiid.toString(),
-            etNama.text.toString(),
-            etAlamat.text.toString(),
-            etNoHP.text.toString(),
-            etCabang.text.toString(),
+            idPegawai = newPegawaiId,
+            namaPegawai = etNama.text.toString(),
+            alamatPegawai = etAlamat.text.toString(),
+            noHPPegawai = etNoHP.text.toString(),
+            idCabang = selectedCabangId,
+            terdaftar = null,
+            email = etEmail.text.toString(),
+            password = etPassword.text.toString()
         )
         pegawaiBaru.setValue(data)
             .addOnSuccessListener {
-                Toast.makeText(
-                    this,
-                    this.getString(R.string.tambah_pegawai_sukses),
-                    Toast.LENGTH_SHORT
-                )
+                Toast.makeText(this, getString(R.string.tambah_pegawai_sukses), Toast.LENGTH_SHORT).show()
                 finish()
             }
             .addOnFailureListener {
-                Toast.makeText(
-                    this,
-                    this.getString(R.string.tambah_pegawai_gagal),
-                    Toast.LENGTH_SHORT
-                )
+                Toast.makeText(this, getString(R.string.tambah_pegawai_gagal), Toast.LENGTH_SHORT).show()
             }
     }
 
     fun update() {
         val dataUpdate = mapOf(
-            "namaPelanggan" to etNama.text.toString(),
-            "alamatPelanggan" to etAlamat.text.toString(),
-            "noHPPelanggan" to etNoHP.text.toString(),
-            "idCabang" to etCabang.text.toString()
+            "namaPegawai" to etNama.text.toString(),
+            "alamatPegawai" to etAlamat.text.toString(),
+            "noHPPegawai" to etNoHP.text.toString(),
+            "email" to etEmail.text.toString(),
+            "password" to etPassword.text.toString(),
+            "idCabang" to selectedCabangId
         )
 
         myRef.child(pegawaiId ?: "").updateChildren(dataUpdate)
             .addOnSuccessListener {
-                Toast.makeText(this, "Berhasil update data pelanggan", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Berhasil update data pegawai", Toast.LENGTH_SHORT).show()
                 finish()
             }
             .addOnFailureListener {
-                Toast.makeText(this, "Gagal update data pelanggan", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Gagal update data pegawai", Toast.LENGTH_SHORT).show()
             }
     }
-
-
 }
