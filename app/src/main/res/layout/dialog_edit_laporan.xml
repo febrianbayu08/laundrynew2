@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Edit Transaksi"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status Pesanan"
+        android:layout_marginTop="16dp"/>
+    <Spinner
+        android:id="@+id/spinner_status_pesanan"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status Pembayaran"
+        android:layout_marginTop="16dp"/>
+    <Spinner
+        android:id="@+id/spinner_status_pembayaran"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tanggal Ambil (Otomatis jika status 'Diambil')"
+        android:layout_marginTop="16dp"/>
+    <EditText
+        android:id="@+id/et_tanggal_ambil"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="YYYY-MM-DD HH:MM:SS"
+        android:focusable="false"
+        android:background="@drawable/bg_edittext"
+        android:padding="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="24dp"
+        android:gravity="end">
+
+        <Button
+            android:id="@+id/btn_batal_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Batal"
+            style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/btn_update_laporan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            android:layout_marginStart="8dp"
+            style="?android:attr/buttonBarButtonStyle" />
+    </LinearLayout>
+</LinearLayout>

@@ -7,10 +7,24 @@
     android:layout_height="match_parent"
     tools:context="com.febrianbayu.pegawai.DataPegawaiActivity">
 
+    <TextView
+        android:id="@+id/tv_title_pegawai"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Data Pegawai"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:padding="16dp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvDATA_PEGAWAI"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_pegawai"
+        android:layout_height="wrap_content"
         tools:listitem="@layout/card_data_pegawai">
     </androidx.recyclerview.widget.RecyclerView>
 

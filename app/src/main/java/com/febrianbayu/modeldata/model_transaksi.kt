@@ -20,6 +20,7 @@ data class model_transaksi(
     val idPegawai: String = "",
     val namaPegawai: String = "",
     val tanggalTransaksi: String = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date()),
+    val tanggalAmbil: String = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date()),
     val statusPembayaran: String = "BELUM_DIBAYAR", // BELUM_DIBAYAR, LUNAS
     val statusPesanan: String = "DIPROSES", // DIPROSES, SELESAI, DIAMBIL
     val metodePembayaran: String = "", // TUNAI, QRIS, DANA, GOPAY, OVO, BAYAR_NANTI

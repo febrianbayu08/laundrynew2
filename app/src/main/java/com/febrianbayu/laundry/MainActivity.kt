@@ -1,6 +1,7 @@
 package com.febrianbayu.laundry
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.LinearLayout
@@ -18,8 +19,6 @@ import com.febrianbayu.transaksi.DataTransaksiActivity
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
-import com.google.firebase.auth.FirebaseAuth
-
 
 class MainActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
@@ -27,8 +26,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        auth = FirebaseAuth.getInstance()
-        
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -71,17 +69,29 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val transaksiMenu = findViewById<LinearLayout>(R.id.transaksi_menu)
+        val transaksiMenu = findViewById<LinearLayout>(R.id.laporan_menu)
         transaksiMenu.setOnClickListener {
             val intent = Intent(this, DataTransaksiActivity::class.java)
+            startActivity(intent)
+        }
+
+        val laporanMenu = findViewById<LinearLayout>(R.id.laporan_menu)
+        laporanMenu.setOnClickListener {
+            val intent = Intent(this, DataTransaksiActivity::class.java)
+            startActivity(intent)
+        }
+
+        val akunMenu = findViewById<LinearLayout>(R.id.akun_menu)
+        akunMenu.setOnClickListener {
+            val intent = Intent(this, DataAkunActivity::class.java)
             startActivity(intent)
         }
     }
     override fun onStart() {
         super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-        if (currentUser == null) {
+        // Check if user is signed in via SharedPreferences
+        val sharedPref = getSharedPreferences("user_data", Context.MODE_PRIVATE)
+        if (!sharedPref.getBoolean("isLoggedIn", false)) {
             // If no user is signed in, redirect to LoginActivity
             val intent = Intent(this, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -105,5 +115,4 @@ class MainActivity : AppCompatActivity() {
         val formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy")
         return currentDate.format(formatter)
     }
-    
 }
