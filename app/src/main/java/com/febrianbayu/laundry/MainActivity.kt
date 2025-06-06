@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.febrianbayu.cabang.DataCabangActivity
+import com.febrianbayu.laporan.DataLaporanActivity
 import com.febrianbayu.layanan.DataLayananActivity
 import com.febrianbayu.pegawai.DataPegawaiActivity
 import com.febrianbayu.pelanggan.DataPelangganActivity
@@ -69,7 +70,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val transaksiMenu = findViewById<LinearLayout>(R.id.laporan_menu)
+        val transaksiMenu = findViewById<LinearLayout>(R.id.transaksi_menu)
         transaksiMenu.setOnClickListener {
             val intent = Intent(this, DataTransaksiActivity::class.java)
             startActivity(intent)
@@ -77,7 +78,7 @@ class MainActivity : AppCompatActivity() {
 
         val laporanMenu = findViewById<LinearLayout>(R.id.laporan_menu)
         laporanMenu.setOnClickListener {
-            val intent = Intent(this, DataTransaksiActivity::class.java)
+            val intent = Intent(this, DataLaporanActivity::class.java)
             startActivity(intent)
         }
 

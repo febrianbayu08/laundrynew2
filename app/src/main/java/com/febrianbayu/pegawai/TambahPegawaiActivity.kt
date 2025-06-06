@@ -95,6 +95,7 @@ class TambahPegawaiActivity : AppCompatActivity() {
         val noHp = etNoHP.text.toString()
         val email = etEmail.text.toString()
         val password = etPassword.text.toString()
+        val selectedCabangId = selectedCabangId
 
         if (nama.isEmpty() || alamat.isEmpty() || noHp.isEmpty() || email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Semua kolom harus diisi", Toast.LENGTH_SHORT).show()

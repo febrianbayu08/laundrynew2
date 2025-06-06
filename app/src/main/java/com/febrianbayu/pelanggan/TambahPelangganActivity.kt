@@ -9,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.febrianbayu.cabang.PilihCabangActivity
 import com.google.firebase.database.FirebaseDatabase
 import com.febrianbayu.laundry.R
 import com.febrianbayu.modeldata.model_pelanggan
@@ -54,6 +55,10 @@ class TambahPelangganActivity : AppCompatActivity() {
         }
         btSimpan.setOnClickListener{
             cekValidasi()
+        }
+        btnPilihCabang.setOnClickListener {
+            val intent = Intent(this, PilihCabangActivity::class.java)
+            startActivityForResult(intent, PICK_CABANG_REQUEST)
         }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

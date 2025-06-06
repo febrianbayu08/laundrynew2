@@ -91,5 +91,11 @@
                 tools:text="LUNAS"
                 tools:textColor="#4CAF50"/>
         </RelativeLayout>
+            <Button
+                android:id="@+id/btn_lihat_invoice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Lihat Invoice" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>
