@@ -11,7 +11,7 @@
         android:id="@+id/tv_title_pegawai"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Data Pegawai"
+        android:text="@string/datpeg"
         android:textSize="22sp"
         android:textStyle="bold"
         android:padding="16dp"

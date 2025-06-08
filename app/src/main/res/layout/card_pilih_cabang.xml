@@ -22,7 +22,7 @@
             android:id="@+id/tvCARD_PILIHCABANG_nama"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nama Cabang"
+            android:text="@string/namaCabang"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />

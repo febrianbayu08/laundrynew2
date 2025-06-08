@@ -14,7 +14,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Konfirmasi Data"
+        android:text="@string/kondat"
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_marginBottom="16dp" />
@@ -57,7 +57,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Layanan Tambahan"
+        android:text="@string/laytam"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_marginBottom="8dp" />
@@ -81,7 +81,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Total Bayar"
+            android:text="@string/tobay"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -106,7 +106,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Batal"
+            android:text="@string/btl"
             android:backgroundTint="#FFC107"
             android:layout_marginEnd="8dp" />
 
@@ -115,7 +115,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Pembayaran"
+            android:text="@string/pbyr"
             android:backgroundTint="#4CAF50"
             android:layout_marginStart="8dp" />
     </LinearLayout>

@@ -29,7 +29,7 @@
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:textColor="@color/black"
-                tools:text="Nama Pelanggan"/>
+                tools:text="@string/text_pelanggan"/>
 
             <TextView
                 android:id="@+id/tv_laporan_status_pesanan"
@@ -88,7 +88,7 @@
                 android:layout_centerVertical="true"
                 android:textStyle="bold"
                 android:textSize="14sp"
-                tools:text="LUNAS"
+                tools:text="@string/lns"
                 tools:textColor="#4CAF50"/>
         </RelativeLayout>
             <Button
@@ -96,6 +96,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="Lihat Invoice" />
+                android:text="@string/livo" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

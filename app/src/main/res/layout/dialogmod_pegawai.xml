@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Detail Pegawai"
+            android:text="@string/depeg"
             android:textStyle="bold"
             android:textSize="18sp"
             android:paddingBottom="8dp" />
@@ -51,7 +51,7 @@
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Nama Pelanggan"/>
+                android:text="@string/text_pegawai"/>
 
             <TextView
                 android:id="@+id/tvDIALOG_PEGAWAI_NAMA"
@@ -72,7 +72,7 @@
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Alamat"/>
+                android:text="@string/card_alamat"/>
 
             <TextView
                 android:id="@+id/tvDIALOG_PEGAWAI_ALAMAT"
@@ -163,7 +163,7 @@
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Hapus"
+                android:text="@string/Hapus"
                 android:backgroundTint="#D32F2F"
                 android:textColor="#FFFFFF"
                 android:layout_marginStart="8dp" />

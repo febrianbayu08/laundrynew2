@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Detail Pelanggan"
+            android:text="@string/depel"
             android:textStyle="bold"
             android:textSize="18sp"
             android:paddingBottom="8dp" />
@@ -32,7 +32,7 @@
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="ID Pelanggan"/>
+                android:text="@string/card_pelanggan"/>
 
             <TextView
                 android:id="@+id/tvDIALOG_PELANGGAN_ID"
@@ -53,7 +53,7 @@
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Nama Pelanggan"/>
+                android:text="@string/text_pelanggan"/>
 
             <TextView
                 android:id="@+id/tvDIALOG_PELANGGAN_NAMA"
@@ -74,7 +74,7 @@
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Alamat"/>
+                android:text="@string/card_alamat"/>
 
             <TextView
                 android:id="@+id/tvDIALOG_PELANGGAN_ALAMAT"
@@ -138,7 +138,7 @@
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Sunting"
+                android:text="@string/snt"
                 android:backgroundTint="#1976D2"
                 android:textColor="#FFFFFF"
                 android:layout_marginEnd="8dp" />
@@ -148,7 +148,7 @@
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Hapus"
+                android:text="@string/Hapus"
                 android:backgroundTint="#D32F2F"
                 android:textColor="#FFFFFF"
                 android:layout_marginStart="8dp" />

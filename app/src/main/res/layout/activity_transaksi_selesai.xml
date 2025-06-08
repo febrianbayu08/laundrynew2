@@ -41,7 +41,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ID Transaksi"
+                android:text="@string/idt"
                 android:textSize="16sp"
                 android:layout_weight="1" />
 
@@ -62,7 +62,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tanggal"
+                android:text="@string/tgl"
                 android:textSize="16sp"
                 android:layout_weight="1" />
 
@@ -83,7 +83,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pesanan"
+                android:text="@string/psn"
                 android:textSize="16sp"
                 android:layout_weight="1" />
 
@@ -104,7 +104,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Karyawan"
+                android:text="@string/text_pegawai"
                 android:textSize="16sp"
                 android:layout_weight="1" />
 
@@ -156,7 +156,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Rincian Tambahan"
+            android:text="@string/ritam"
             android:textSize="16sp"
             android:textStyle="bold"
             android:layout_marginTop="16dp"
@@ -179,7 +179,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Subtotal Tambahan"
+                android:text="@string/subtam"
                 android:textSize="16sp"
                 android:layout_weight="1" />
 
@@ -208,7 +208,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total Bayar"
+                android:text="@string/tobay"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:layout_weight="1" />
@@ -234,7 +234,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Kirim WhatsApp"
+                android:text="@string/kirwa"
                 android:textAllCaps="false"
                 android:layout_marginEnd="8dp"
                 android:backgroundTint="#25D366" />
@@ -244,7 +244,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Cetak"
+                android:text="@string/ctk"
                 android:textAllCaps="false"
                 android:backgroundTint="#00B0FF" />
         </LinearLayout>
@@ -253,7 +253,7 @@
             android:id="@+id/btnSelesai"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Selesai"
+            android:text="@string/sls"
             android:textAllCaps="false"
             android:backgroundTint="#4CAF50"
             android:layout_marginTop="8dp"

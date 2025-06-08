@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Edit Transaksi"
+        android:text="@string/editra"
         android:textSize="20sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -17,7 +17,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Status Pesanan"
+        android:text="@string/stapes"
         android:layout_marginTop="16dp"/>
     <Spinner
         android:id="@+id/spinner_status_pesanan"
@@ -37,7 +37,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tanggal Ambil (Otomatis jika status 'Diambil')"
+        android:text="@string/tanggam"
         android:layout_marginTop="16dp"/>
     <EditText
         android:id="@+id/et_tanggal_ambil"
@@ -59,7 +59,7 @@
             android:id="@+id/btn_batal_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Batal"
+            android:text="@string/btl"
             style="?android:attr/buttonBarButtonStyle"
             android:textColor="@color/black"/>
 
