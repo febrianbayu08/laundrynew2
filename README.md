@@ -1,4 +1,7 @@
 🔐 Login Activity - Aplikasi Laundry Android
+
+![image](https://github.com/user-attachments/assets/cd3d4f11-858b-467b-b532-ac678759d285)
+
 Ini adalah halaman Login dalam aplikasi Android Laundry yang dibangun menggunakan Kotlin, Firebase Realtime Database, dan XML UI Design berbasis ConstraintLayout.
 
 ✨ Fitur Utama
@@ -97,15 +100,13 @@ Kelas model_pegawai harus memiliki properti: idPegawai, namaPegawai, idCabang, e
 
 Gunakan proteksi tambahan seperti hashing password di produksi.
 
-📸 Screenshot 
-![WhatsApp Image 2025-06-11 at 15 59 25_4f99db35](https://github.com/user-attachments/assets/6803a23d-9497-4e31-99c5-1c67d8439b0a)
-
 
 
 
 
 🏠 MainActivity - Aplikasi Laundry Android
-![WhatsApp Image 2025-06-11 at 15 54 06_fa9ac052](https://github.com/user-attachments/assets/1f162a2f-c8ca-4a59-bf43-c581ec264c27)
+![image](https://github.com/user-attachments/assets/32859efc-9433-4882-a346-f9a4e7275085)
+
 
 MainActivity merupakan halaman beranda utama aplikasi Laundry Android. Halaman ini menampilkan informasi umum seperti salam waktu, tanggal, estimasi pendapatan, serta menu navigasi cepat ke berbagai modul seperti Transaksi, Pegawai, Pelanggan, dan lainnya.
 
