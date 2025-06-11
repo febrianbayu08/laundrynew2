@@ -53,15 +53,13 @@ Jika tidak cocok atau tidak ditemukan: tampilkan pesan kesalahan.
 Redirect ke MainActivity jika berhasil.
 
 🔒 Penyimpanan Sesi:
-kotlin
-Copy
-Edit
 val editor = sharedPref.edit()
 editor.putString("idPegawai", pegawai.idPegawai)
 editor.putString("namaPegawai", pegawai.namaPegawai)
 editor.putString("idCabang", pegawai.idCabang)
 editor.putBoolean("isLoggedIn", true)
 editor.apply()
+
 📦 Auto-login:
 Jika pengguna sudah login sebelumnya, halaman ini akan otomatis mengarahkan ke MainActivity pada onStart().
 
@@ -177,9 +175,6 @@ getCurrentDate(): Mengembalikan tanggal hari ini dalam format "dd MMMM yyyy"
 getGreetingMessage(): Mengembalikan salam berdasarkan jam saat ini
 
 🔁 Redirect Otomatis
-kotlin
-Copy
-Edit
 override fun onStart() {
     val sharedPref = getSharedPreferences("user_data", Context.MODE_PRIVATE)
     if (!sharedPref.getBoolean("isLoggedIn", false)) {
@@ -187,17 +182,16 @@ override fun onStart() {
         finish()
     }
 }
+
 🧭 Navigasi Menu
 Setiap menu (mis. pelanggan_menu) akan membuka Activity yang sesuai:
 
-kotlin
-Copy
-Edit
 val pelangganMenu = findViewById<LinearLayout>(R.id.pelanggan_menu)
 pelangganMenu.setOnClickListener {
     val intent = Intent(this, DataPelangganActivity::class.java)
     startActivity(intent)
 }
+
 🎨 Resource yang Digunakan
 Drawable
 @drawable/ic_transaksi
@@ -306,24 +300,18 @@ Redirect ke halaman login (LoginActivity) dan mengakhiri aktivitas.
 
 💡 Struktur Kode
 🔑 Shared Preferences
-kotlin
-Copy
-Edit
 sharedPref = getSharedPreferences("user_data", Context.MODE_PRIVATE)
+
 📥 Mengambil data dari Firebase
-kotlin
-Copy
-Edit
 database.child(idPegawai).addListenerForSingleValueEvent(...)
+
 📤 Logout
-kotlin
-Copy
-Edit
 val editor = sharedPref.edit()
 editor.clear()
 editor.apply()
 startActivity(Intent(this, LoginActivity::class.java))
 finish()
+
 🖼️ Layout XML
 Layout menggunakan struktur LinearLayout vertikal dengan:
 
@@ -354,10 +342,9 @@ Button logout menggunakan @color/purple_700 dengan teks putih.
 Pastikan Anda telah menambahkan dependensi berikut di build.gradle:
 
 gradle
-Copy
-Edit
 implementation 'com.google.firebase:firebase-database'
 implementation 'androidx.cardview:cardview:1.0.0'
+
 ⚠️ Catatan Tambahan
 Class model_pegawai harus memiliki field: idPegawai, namaPegawai, email, noHPPegawai, alamatPegawai, idCabang.
 
