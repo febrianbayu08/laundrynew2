@@ -251,7 +251,7 @@ Intent untuk navigasi antar aktivitas
 LocalTime & LocalDate untuk greeting & tanggal
 
 
-
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 👤 DataAkunActivity - Aplikasi Laundry Android
@@ -353,7 +353,7 @@ Data disediakan oleh Firebase Realtime Database di path: pegawai/{idPegawai}.
 Tombol logout membersihkan semua data sesi tanpa konfirmasi tambahan.
 
 
-
+--------------------------------------------------------------------------------------------------------------
 
 
 🧺 Data & Tambah Layanan - Aplikasi Laundry Android
@@ -397,7 +397,7 @@ Menampilkan notifikasi sukses/gagal menggunakan Toast.
 Tambahkan koneksi internet di AndroidManifest.xml:
 
 
-
+------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 ➕ Data & Tambah Tambahan - Aplikasi Laundry Android
@@ -476,7 +476,7 @@ Untuk pengelolaan data lebih lanjut (seperti edit dan hapus), Anda dapat memperl
 Pastikan resource string seperti validasi dan pesan sukses/gagal sudah ditambahkan di strings.xml.
 
 
-
+--------------------------------------------------------------------------------------------------------------------------
 
 
 👥 Data & Tambah/Edit Pegawai - Aplikasi Laundry Android
@@ -567,6 +567,79 @@ Pastikan semua string validasi, pesan toast, dan label tombol sudah tersedia di 
 Struktur data pada Firebase harus sesuai dengan model model_pegawai.
 
 Jangan lupa izin koneksi internet harus tersedia dalam AndroidManifest.xml.
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+🏢 Data & Tambah Cabang – Aplikasi Laundry Android
+Modul ini merupakan bagian dari sistem manajemen cabang dalam aplikasi Laundry. Terdiri dari dua bagian utama:
+
+![image](https://github.com/user-attachments/assets/00e8d01b-3f71-46f6-aa09-269c2e3fdb8b)
+
+
+📋 DataCabangActivity – Menampilkan daftar cabang dari database.
+
+![image](https://github.com/user-attachments/assets/8c31de29-11bc-4949-8b35-01d90ebce211)
+
+
+➕ TambahCabangActivity – Form untuk menambahkan cabang baru ke sistem.
+
+📋 DataCabangActivity
+✨ Fitur Utama
+🔄 Menampilkan daftar cabang secara real-time dari Firebase Realtime Database.
+
+🆕 Menyusun data terbaru di bagian atas.
+
+🧾 Menggunakan RecyclerView untuk tampilan daftar.
+
+➕ Menyediakan tombol Floating Action Button (FAB) untuk menambah cabang.
+
+⚠️ Menampilkan notifikasi (toast) saat data gagal dimuat.
+
+🔁 Alur Kerja
+Aplikasi mengakses node cabang di Firebase.
+
+Data terbaru diambil dan dimuat ke dalam daftar cabang.
+
+Pengguna dapat menambahkan cabang baru melalui tombol FAB.
+
+➕ TambahCabangActivity
+🧾 Form Input
+🏷️ Nama Cabang
+
+📍 Alamat
+
+☎️ Nomor HP
+
+✅ Validasi Input
+❌ Semua kolom harus diisi. Jika kosong, akan muncul pesan error.
+
+🔔 Notifikasi ditampilkan sebagai toast jika input tidak valid.
+
+💾 Proses Simpan
+🔐 Data disimpan ke Firebase dengan ID unik (push ID).
+
+🎉 Toast ditampilkan saat penyimpanan sukses.
+
+❌ Jika gagal, pengguna mendapat notifikasi error.
+
+⏹️ Setelah sukses, pengguna kembali ke halaman daftar cabang.
+
+🧩 Struktur Antarmuka
+🧱 Halaman	🎯 Komponen	📝 Keterangan
+Data Cabang	RecyclerView, FAB	Menampilkan daftar cabang
+Tambah Cabang	Input nama, alamat, no HP	Formulir tambah cabang
+
+⚙️ Dependensi yang Digunakan
+🗂️ Firebase Realtime Database – Menyimpan data cabang.
+
+🧰 Material Components – FAB dan desain modern.
+
+🪄 RecyclerView – Untuk menampilkan daftar secara efisien.
+
+☝️ Pastikan Anda sudah mengaktifkan izin internet dan menambahkan semua string resource ke strings.xml.
 
 
 
