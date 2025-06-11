@@ -642,5 +642,77 @@ Tambah Cabang	Input nama, alamat, no HP	Formulir tambah cabang
 ☝️ Pastikan Anda sudah mengaktifkan izin internet dan menambahkan semua string resource ke strings.xml.
 
 
+------------------------------------------------------------------------------------------------------------
+
+
+👤 Data & Tambah/Edit Pelanggan – Aplikasi Laundry Android
+Modul ini digunakan untuk mengelola data pelanggan dalam aplikasi Laundry, termasuk melihat daftar pelanggan dan menambahkan atau memperbarui data mereka.
+
+![image](https://github.com/user-attachments/assets/f2f7a6c9-e484-4cbf-911b-a95f7a09df00)
+
+
+📋 DataPelangganActivity
+✨ Fitur Utama
+🔄 Menampilkan daftar pelanggan dari Firebase Realtime Database secara real-time.
+
+🧾 Menggunakan RecyclerView dengan urutan data terbaru di atas.
+
+➕ Menyediakan tombol Floating Action Button (FAB) untuk menambahkan pelanggan baru.
+
+⚠️ Menampilkan pesan kesalahan menggunakan toast jika terjadi kegagalan pemuatan data.
+
+🔁 Alur Kerja
+Data diambil dari node pelanggan di Firebase.
+
+Hasil query ditampilkan di RecyclerView.
+
+Pengguna dapat membuka halaman tambah pelanggan melalui tombol FAB.
+
+![image](https://github.com/user-attachments/assets/11f19687-67c6-4b37-aed5-f706cffcb790)
+
+
+➕ TambahPelangganActivity
+🧾 Form Input
+🏷️ Nama Pelanggan
+
+📍 Alamat
+
+☎️ Nomor HP
+
+🏢 Cabang (dipilih dari PilihCabangActivity)
+
+✅ Validasi Input
+Semua kolom wajib diisi.
+
+Jika cabang belum dipilih, pengguna akan diminta memilih terlebih dahulu.
+
+Bila ada input yang kosong, akan ditampilkan pesan kesalahan dan permintaan untuk melengkapi data.
+
+💾 Proses Simpan / Update
+🔐 Jika pelanggan baru, data disimpan dengan ID unik dari Firebase.
+
+🔄 Jika pelanggan lama, data akan diperbarui berdasarkan idPelanggan.
+
+🎉 Pengguna akan menerima toast sukses atau gagal setelah proses simpan/update.
+
+📤 Setelah berhasil, aktivitas akan ditutup otomatis.
+
+🧩 Struktur Antarmuka
+Halaman	Komponen Kunci	Keterangan
+Data Pelanggan	RecyclerView, FAB	Menampilkan daftar pelanggan
+Tambah Pelanggan	Form input + tombol simpan	Tambah atau edit data pelanggan
+Pilih Cabang	Digunakan untuk memilih cabang pelanggan	Dikembalikan melalui onActivityResult()
+
+📦 Ketergantungan yang Digunakan
+🗂️ Firebase Realtime Database – Menyimpan data pelanggan.
+
+🧰 Material Components – Untuk Floating Action Button dan antarmuka modern.
+
+🪄 RecyclerView – Menampilkan daftar dengan performa tinggi.
+
+💡 Pastikan semua teks seperti validasi dan label sudah ditambahkan ke strings.xml.
+🌐 Jangan lupa menambahkan izin internet di AndroidManifest.xml.
+
+
 
 
