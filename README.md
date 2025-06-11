@@ -393,69 +393,181 @@ Menyimpan data ke Firebase dengan key unik.
 
 Menampilkan notifikasi sukses/gagal menggunakan Toast.
 
-🧱 Struktur File & Layout
-🔧 activity_data_layanan.xml
-xml
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/rvDATA_LAYANAN"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" />
-
-<com.google.android.material.floatingactionbutton.FloatingActionButton
-    android:id="@+id/fabDATA_PENGGUNA_TambahLayanan"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:src="@drawable/add" />
-🔧 activity_tambah_layanan.xml
-xml
-<EditText android:id="@+id/etlayanannama" />
-<EditText android:id="@+id/etlayananharga" />
-<EditText android:id="@+id/etlayanancabang" />
-<Button android:id="@+id/btlayanansimpan" android:text="Simpan" />
-🧠 Kode Penting
-🔄 Ambil Data Layanan dari Firebase
-kotlin
-val query = myRef.orderByChild("idLayanan").limitToLast(100)
-query.addValueEventListener(object : ValueEventListener { ... })
-✅ Validasi Tambah Layanan
-kotlin
-if (nama.isEmpty()) {
-    etNama.error = "Nama harus diisi"
-    return
-}
-💾 Simpan ke Firebase
-kotlin
-val data = model_layanan(layananid, nama, harga, cabang)
-layananBaru.setValue(data)
-📦 Model Data: model_layanan.kt
-kotlin
-data class model_layanan(
-    val idLayanan: String = "",
-    val namaLayanan: String = "",
-    val hargaLayanan: String = "",
-    val idCabang: String = ""
-)
-🖼️ Adapter
-Pastikan Anda memiliki adapter AdapterDataLayanan.kt untuk menampilkan daftar layanan di RecyclerView. Biasanya bentuknya seperti:
-
-kotlin
-class AdapterDataLayanan(private val list: List<model_layanan>) :
-    RecyclerView.Adapter<AdapterDataLayanan.ViewHolder>() {
-    ...
-}
-📚 Dependensi
-Tambahkan ini di build.gradle:
-
-gradle
-implementation 'com.google.firebase:firebase-database'
-implementation 'androidx.recyclerview:recyclerview:1.3.1'
-implementation 'com.google.android.material:material:1.11.0'
 🔐 Permissions
 Tambahkan koneksi internet di AndroidManifest.xml:
 
-xml
-Copy
-Edit
-<uses-permission android:name="android.permission.INTERNET" />
+
+
+
+
+➕ Data & Tambah Tambahan - Aplikasi Laundry Android
+
+![image](https://github.com/user-attachments/assets/58be904f-3829-4114-a7c8-452da398813e)
+
+
+![image](https://github.com/user-attachments/assets/d0d4e680-25ed-443a-911f-4cb7bf0bc42a)
+
+
+
+Modul ini merupakan bagian dari sistem manajemen tambahan biaya atau layanan dalam aplikasi Laundry. Terdiri dari dua aktivitas utama: DataTambahanActivity untuk menampilkan data tambahan dan TambahTambahanActivity untuk menambahkan entri baru.
+
+🗂️ Fitur: DataTambahanActivity
+Menampilkan daftar tambahan layanan dari Firebase Realtime Database.
+
+Menggunakan tampilan berbasis RecyclerView.
+
+Data ditampilkan dari urutan terbaru ke terlama.
+
+Jika data tidak ada, tampilan tetap rapi dan tidak menampilkan kesalahan.
+
+Terdapat tombol Floating Action Button (FAB) untuk menambahkan data tambahan baru.
+
+➕ Fitur: TambahTambahanActivity
+Form untuk input data tambahan:
+
+Nama tambahan
+
+Harga
+
+Cabang terkait
+
+Dilengkapi validasi input:
+
+Semua field wajib diisi sebelum penyimpanan.
+
+Menampilkan notifikasi jika data tidak lengkap.
+
+Data disimpan ke Firebase Realtime Database menggunakan key unik.
+
+Terdapat notifikasi berupa pesan sukses atau gagal setelah proses simpan dilakukan.
+
+🏗️ Struktur Layout
+activity_data_tambahan.xml:
+
+Mengandung RecyclerView untuk daftar tambahan.
+
+FloatingActionButton di pojok kanan bawah untuk membuka halaman tambah.
+
+activity_tambah_tambahan.xml (diasumsikan sesuai konvensi):
+
+Tiga input: nama tambahan, harga, dan cabang.
+
+Tombol simpan untuk menyimpan data ke Firebase.
+
+📦 Data Model
+Data tambahan disimpan ke node tambahan pada Firebase, dan diasumsikan memiliki atribut:
+
+ID Tambahan
+
+Nama Tambahan
+
+Harga
+
+Cabang
+
+🔐 Validasi dan Penyimpanan
+Sistem memastikan bahwa tidak ada data kosong yang disimpan. Setiap data baru disimpan dengan ID unik yang dihasilkan oleh Firebase. Saat penyimpanan berhasil atau gagal, pengguna akan menerima notifikasi visual (toast).
+
+📝 Catatan Tambahan
+Aktivitas ini saling terhubung: tombol tambah pada DataTambahanActivity akan membuka TambahTambahanActivity.
+
+Untuk pengelolaan data lebih lanjut (seperti edit dan hapus), Anda dapat memperluas fungsionalitas adapter.
+
+Pastikan resource string seperti validasi dan pesan sukses/gagal sudah ditambahkan di strings.xml.
+
+
+
+
+
+👥 Data & Tambah/Edit Pegawai - Aplikasi Laundry Android
+Modul ini digunakan untuk mengelola data pegawai dalam sistem aplikasi Laundry. Terdiri dari dua aktivitas utama:
+
+![image](https://github.com/user-attachments/assets/a94d4493-02cd-46b0-b4fa-b48488ae2c9c)
+
+
+DataPegawaiActivity – Menampilkan seluruh daftar pegawai dari database.
+
+![image](https://github.com/user-attachments/assets/4c2e9af8-a01b-4e24-91ca-5fd6ef7a7dd6)
+
+
+TambahPegawaiActivity – Menambahkan pegawai baru atau mengedit data pegawai yang sudah ada.
+
+🔍 Fitur: DataPegawaiActivity
+Menampilkan data pegawai dari Firebase Realtime Database menggunakan RecyclerView.
+
+Data ditampilkan berdasarkan waktu input terakhir (data terbaru muncul di atas).
+
+Dilengkapi dengan Floating Action Button (FAB) di pojok kanan bawah untuk menambahkan pegawai baru.
+
+Data dimuat secara real-time dari node pegawai.
+
+Bila proses pengambilan data gagal, pengguna akan diberi notifikasi melalui pesan toast.
+
+➕ Fitur: TambahPegawaiActivity
+Form input data pegawai yang terdiri dari:
+
+Nama
+
+Alamat
+
+Nomor HP
+
+Email
+
+Password
+
+Pilihan cabang (melalui PilihCabangActivity)
+
+Bisa digunakan untuk:
+
+Menambahkan pegawai baru
+
+Mengedit data pegawai (jika data dikirim lewat Intent)
+
+Validasi akan memastikan semua data diisi sebelum disimpan atau diperbarui.
+
+Menyimpan data baru menggunakan push ID dari Firebase.
+
+Pembaruan data menggunakan metode updateChildren dengan referensi ke idPegawai.
+
+Notifikasi kesuksesan atau kegagalan disampaikan melalui toast.
+
+🧱 Struktur Tampilan (Layout)
+activity_data_pegawai.xml:
+
+Terdiri dari judul halaman, daftar pegawai (RecyclerView), dan tombol tambah (FAB).
+
+activity_tambah_pegawai.xml:
+
+Memuat form lengkap untuk input data pegawai dan tombol pilih cabang.
+
+Terdapat teks untuk menampilkan ID atau nama cabang yang telah dipilih.
+
+🧩 Alur Tambah/Edit Pegawai
+Jika pengguna membuka halaman dengan intent kosong → mode tambah data.
+
+Jika idPegawai dikirimkan melalui intent → mode edit:
+
+Field akan diisi otomatis dengan data yang dikirim.
+
+Tombol simpan berubah menjadi tombol update.
+
+Setelah disimpan atau diperbarui, aktivitas ditutup dan pengguna kembali ke halaman sebelumnya.
+
+📦 Kebutuhan Tambahan
+Adapter bernama AdapterDataPegawai untuk menampilkan data dalam RecyclerView.
+
+Layout kartu card_data_pegawai.xml untuk menampilkan setiap pegawai.
+
+Aktivitas PilihCabangActivity yang mengembalikan data cabang terpilih ke TambahPegawaiActivity.
+
+📝 Catatan
+Pastikan semua string validasi, pesan toast, dan label tombol sudah tersedia di strings.xml.
+
+Struktur data pada Firebase harus sesuai dengan model model_pegawai.
+
+Jangan lupa izin koneksi internet harus tersedia dalam AndroidManifest.xml.
+
+
 
 
