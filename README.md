@@ -353,3 +353,109 @@ Data disediakan oleh Firebase Realtime Database di path: pegawai/{idPegawai}.
 Tombol logout membersihkan semua data sesi tanpa konfirmasi tambahan.
 
 
+
+
+
+🧺 Data & Tambah Layanan - Aplikasi Laundry Android
+Modul ini mencakup dua bagian utama:
+
+![image](https://github.com/user-attachments/assets/d0a92918-3aeb-497c-a776-d2357639bc08)
+
+DataLayananActivity: Menampilkan daftar layanan laundry dari Firebase Realtime Database.
+
+![image](https://github.com/user-attachments/assets/41952778-16f4-4004-8ea0-df0c9deaf2b1)
+
+
+TambahLayananActivity: Menambahkan layanan baru ke database.
+
+🚀 Fitur
+📄 DataLayananActivity
+Menampilkan layanan laundry (nama, harga, cabang) dalam RecyclerView.
+
+Menyimpan data layanan secara real-time dari Firebase.
+
+Menampilkan teks "data kosong" jika tidak ada layanan.
+
+Tombol FloatingActionButton untuk menambahkan layanan baru.
+
+➕ TambahLayananActivity
+Form input untuk:
+
+Nama Layanan
+
+Harga Layanan
+
+Cabang
+
+Validasi setiap field wajib diisi.
+
+Menyimpan data ke Firebase dengan key unik.
+
+Menampilkan notifikasi sukses/gagal menggunakan Toast.
+
+🧱 Struktur File & Layout
+🔧 activity_data_layanan.xml
+xml
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/rvDATA_LAYANAN"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/fabDATA_PENGGUNA_TambahLayanan"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/add" />
+🔧 activity_tambah_layanan.xml
+xml
+<EditText android:id="@+id/etlayanannama" />
+<EditText android:id="@+id/etlayananharga" />
+<EditText android:id="@+id/etlayanancabang" />
+<Button android:id="@+id/btlayanansimpan" android:text="Simpan" />
+🧠 Kode Penting
+🔄 Ambil Data Layanan dari Firebase
+kotlin
+val query = myRef.orderByChild("idLayanan").limitToLast(100)
+query.addValueEventListener(object : ValueEventListener { ... })
+✅ Validasi Tambah Layanan
+kotlin
+if (nama.isEmpty()) {
+    etNama.error = "Nama harus diisi"
+    return
+}
+💾 Simpan ke Firebase
+kotlin
+val data = model_layanan(layananid, nama, harga, cabang)
+layananBaru.setValue(data)
+📦 Model Data: model_layanan.kt
+kotlin
+data class model_layanan(
+    val idLayanan: String = "",
+    val namaLayanan: String = "",
+    val hargaLayanan: String = "",
+    val idCabang: String = ""
+)
+🖼️ Adapter
+Pastikan Anda memiliki adapter AdapterDataLayanan.kt untuk menampilkan daftar layanan di RecyclerView. Biasanya bentuknya seperti:
+
+kotlin
+class AdapterDataLayanan(private val list: List<model_layanan>) :
+    RecyclerView.Adapter<AdapterDataLayanan.ViewHolder>() {
+    ...
+}
+📚 Dependensi
+Tambahkan ini di build.gradle:
+
+gradle
+implementation 'com.google.firebase:firebase-database'
+implementation 'androidx.recyclerview:recyclerview:1.3.1'
+implementation 'com.google.android.material:material:1.11.0'
+🔐 Permissions
+Tambahkan koneksi internet di AndroidManifest.xml:
+
+xml
+Copy
+Edit
+<uses-permission android:name="android.permission.INTERNET" />
+
+
