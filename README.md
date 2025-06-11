@@ -105,8 +105,8 @@ Gunakan proteksi tambahan seperti hashing password di produksi.
 
 
 🏠 MainActivity - Aplikasi Laundry Android
-![image](https://github.com/user-attachments/assets/32859efc-9433-4882-a346-f9a4e7275085)
 
+![image](https://github.com/user-attachments/assets/32859efc-9433-4882-a346-f9a4e7275085)
 
 MainActivity merupakan halaman beranda utama aplikasi Laundry Android. Halaman ini menampilkan informasi umum seperti salam waktu, tanggal, estimasi pendapatan, serta menu navigasi cepat ke berbagai modul seperti Transaksi, Pegawai, Pelanggan, dan lainnya.
 
@@ -255,5 +255,114 @@ SharedPreferences untuk sesi login
 Intent untuk navigasi antar aktivitas
 
 LocalTime & LocalDate untuk greeting & tanggal
+
+
+
+
+
+👤 DataAkunActivity - Aplikasi Laundry Android
+
+![image](https://github.com/user-attachments/assets/74b67c8c-73f5-4000-af7d-ac761b4f82ad)
+
+DataAkunActivity adalah halaman profil pegawai yang menampilkan informasi pribadi pengguna yang sedang login, serta menyediakan tombol untuk logout dari sesi aplikasi.
+
+📌 Fitur Utama
+🔍 Menampilkan informasi lengkap pegawai:
+
+ID Pegawai
+
+Nama
+
+Email
+
+Nomor HP
+
+Alamat
+
+Cabang
+
+💾 Mengambil data langsung dari Firebase Realtime Database.
+
+🗂️ Menggunakan SharedPreferences untuk identifikasi sesi pengguna.
+
+🚪 Tombol Logout untuk menghapus sesi dan kembali ke halaman login.
+
+🧠 Alur Kerja
+🔁 Saat onCreate():
+Inisialisasi tampilan (initViews()).
+
+Ambil data dari SharedPreferences.
+
+Query ke Firebase berdasarkan idPegawai.
+
+Tampilkan data ke UI.
+
+📤 Logout:
+Saat tombol btnLogout diklik:
+
+Membersihkan semua data SharedPreferences.
+
+Redirect ke halaman login (LoginActivity) dan mengakhiri aktivitas.
+
+💡 Struktur Kode
+🔑 Shared Preferences
+kotlin
+Copy
+Edit
+sharedPref = getSharedPreferences("user_data", Context.MODE_PRIVATE)
+📥 Mengambil data dari Firebase
+kotlin
+Copy
+Edit
+database.child(idPegawai).addListenerForSingleValueEvent(...)
+📤 Logout
+kotlin
+Copy
+Edit
+val editor = sharedPref.edit()
+editor.clear()
+editor.apply()
+startActivity(Intent(this, LoginActivity::class.java))
+finish()
+🖼️ Layout XML
+Layout menggunakan struktur LinearLayout vertikal dengan:
+
+TextView Judul: "Profil Pegawai"
+
+CardView yang berisi label dan isi data pengguna
+
+Tombol logout di bagian bawah
+
+Komponen UI Penting:
+Komponen	ID	Keterangan
+Nama	tv_akun_nama	Menampilkan nama pegawai
+Email	tv_akun_email	Email pegawai
+No HP	tv_akun_nohp	Nomor telepon
+Alamat	tv_akun_alamat	Alamat lengkap
+ID Pegawai	tv_akun_id_pegawai	ID unik pengguna
+Cabang	tv_akun_cabang	Lokasi cabang
+Tombol Logout	btn_logout	Keluar dari sesi dan kembali login
+
+🎨 Desain & Styling
+CardView digunakan untuk membungkus data pegawai agar tampak bersih dan profesional.
+
+TextView label menggunakan textSize="12sp", sedangkan nilainya 16sp dan bold.
+
+Button logout menggunakan @color/purple_700 dengan teks putih.
+
+📦 Dependensi yang Digunakan
+Pastikan Anda telah menambahkan dependensi berikut di build.gradle:
+
+gradle
+Copy
+Edit
+implementation 'com.google.firebase:firebase-database'
+implementation 'androidx.cardview:cardview:1.0.0'
+⚠️ Catatan Tambahan
+Class model_pegawai harus memiliki field: idPegawai, namaPegawai, email, noHPPegawai, alamatPegawai, idCabang.
+
+Data disediakan oleh Firebase Realtime Database di path: pegawai/{idPegawai}.
+
+Tombol logout membersihkan semua data sesi tanpa konfirmasi tambahan.
 
 
