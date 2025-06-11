@@ -714,5 +714,222 @@ Pilih Cabang	Digunakan untuk memilih cabang pelanggan	Dikembalikan melalui onAct
 🌐 Jangan lupa menambahkan izin internet di AndroidManifest.xml.
 
 
+---------------------------------------------------------------------------------------
+
+
+💼 Modul Transaksi – Aplikasi Laundry Android
+Modul ini menangani proses pembuatan transaksi laundry, mulai dari pemilihan pelanggan, layanan, layanan tambahan, hingga perhitungan total biaya.
+
+✨ Fitur Utama
+
+![image](https://github.com/user-attachments/assets/bdd995f8-b5cc-4662-8c7d-ea28438a6e96)
+
+📦 DataTransaksiActivity
+👤 Memilih pelanggan dari daftar.
+
+🧺 Memilih layanan utama.
+
+➕ Menambahkan layanan tambahan.
+
+💰 Menghitung total biaya transaksi secara otomatis.
+
+✅ Validasi data sebelum diproses.
+
+📤 Melanjutkan transaksi ke halaman konfirmasi.
+
+🔍 PilihPelangganActivity
+🔎 Dilengkapi dengan fitur search.
+
+📃 Menampilkan pelanggan berdasarkan id cabang (jika tersedia).
+
+🚫 Menampilkan pesan kosong bila tidak ada data yang cocok.
+
+🧾 Alur Proses Transaksi
+Pengguna memilih pelanggan → data nama & nomor HP ditampilkan.
+
+Pengguna memilih layanan utama → nama layanan & harga ditampilkan.
+
+Pengguna menambahkan layanan tambahan (opsional) → ditampilkan dalam RecyclerView.
+
+Sistem menghitung total harga:
+💲 Total = Harga layanan utama + Jumlah semua layanan tambahan
+
+Jika semua data valid, pengguna lanjut ke KonfirmasiDataActivity.
+
+🧩 Komponen UI
+Komponen	Fungsi
+🔘 btnPilihPelanggan	Memilih pelanggan dari PilihPelangganActivity
+🔘 btnPilihLayanan	Memilih layanan utama
+🔘 btnTambahan	Menambahkan layanan tambahan
+🔘 btnProses	Melanjutkan ke konfirmasi transaksi
+📋 RecyclerView	Menampilkan daftar layanan tambahan terpilih
+🧮 TextView	Menampilkan nama dan harga layanan
+
+✅ Validasi
+❌ Tidak bisa melanjutkan tanpa memilih pelanggan dan layanan utama.
+
+⚠️ Akan muncul Toast jika ada data penting yang belum dipilih.
+
+🧰 Teknologi yang Digunakan
+Firebase Realtime Database – Menyimpan data pelanggan dan layanan.
+
+SharedPreferences – Menyimpan sesi pegawai dan id cabang.
+
+RecyclerView + Adapter – Untuk daftar layanan tambahan dan hasil pencarian pelanggan.
+
+SearchView – Untuk filter nama/alamat/nomor HP pelanggan secara real-time.
+
+
+--------------------------------------------------------------------------------------
+
+
+🧾 Konfirmasi Transaksi – Aplikasi Laundry
+KonfirmasiDataActivity adalah halaman finalisasi dalam modul transaksi yang menampilkan ringkasan data pelanggan, layanan utama, layanan tambahan, dan total harga. Di halaman ini pengguna juga memilih metode pembayaran sebelum data transaksi disimpan ke Firebase.
+
+![image](https://github.com/user-attachments/assets/0c4296e0-91f6-4e47-9f63-a2bd6330660c)
+
+
+📌 Fitur Utama
+Menampilkan detail lengkap transaksi: pelanggan, layanan utama, tambahan, dan harga total.
+
+Menyediakan berbagai metode pembayaran dengan tampilan Bottom Sheet yang interaktif.
+
+Menyimpan transaksi ke Firebase Realtime Database.
+
+Mengarahkan ke halaman struk setelah proses berhasil.
+
+🧩 Komponen UI
+Nama Pelanggan & No. HP 📱
+
+Layanan Utama & Harga 🧺
+
+Layanan Tambahan ➕
+
+Total Bayar 💰
+
+Tombol Pembayaran & Batal ✅❌
+
+💳 Metode Pembayaran yang Tersedia
+Pengguna dapat memilih salah satu dari metode berikut:
+
+💵 Tunai
+
+📱 QRIS
+
+💸 DANA
+
+🟢 GoPay
+
+🟣 OVO
+
+⏳ Bayar Nanti
+
+🔄 Alur Proses
+Data transaksi diterima dari halaman sebelumnya melalui Intent.
+
+Komponen UI diisi dengan data pelanggan, layanan, dan tambahan.
+
+Pengguna menekan tombol Pembayaran dan memilih metode.
+
+Data disimpan ke Firebase dengan status pesanan dan metode pembayaran.
+
+Pengguna diarahkan ke halaman Transaksi Selesai untuk melihat struk.
+
+📦 Data yang Disimpan
+Setiap transaksi berisi informasi lengkap seperti:
+
+ID Transaksi
+
+Data pelanggan dan layanan
+
+Tanggal dan waktu transaksi
+
+Status pembayaran & pesanan
+
+Metode pembayaran yang dipilih
+
+Daftar layanan tambahan (jika ada)
+
+Total harga akhir
+
+📋 Validasi
+Wajib pilih pelanggan & layanan utama.
+
+Jika terjadi kesalahan saat memproses atau menyimpan, akan muncul pesan notifikasi dan log error tercatat.
+
+
+------------------------------------------------------------------------------------------------------------
+
+
+✅ Transaksi Selesai – Bayu Laundry App
+✨ Halaman ini menandai penyelesaian transaksi dalam aplikasi Bayu Laundry. Pengguna dapat melihat detail transaksi, mencetak struk, atau membagikannya ke WhatsApp.
+
+![image](https://github.com/user-attachments/assets/d993ad03-bdc5-44d3-91e3-d69be8533799)
+
+
+🧾 Fitur Utama
+📋 Ringkasan Transaksi
+Menampilkan informasi lengkap, seperti:
+
+🆔 ID Transaksi
+
+🧍 Nama Pelanggan & 👨‍💼 Pegawai
+
+🧺 Layanan Utama & ➕ Tambahan
+
+💰 Total Pembayaran
+
+📅 Tanggal Transaksi
+
+🧾 Metode & Status Pembayaran
+
+🖨️ Cetak Struk Bluetooth
+Terintegrasi dengan printer thermal (default: RPP02N)
+
+Menyediakan hasil cetakan profesional
+
+Mendukung pemformatan seperti bold, rata tengah, dan potong kertas otomatis
+
+📤 Kirim ke WhatsApp
+Otomatis membuat pesan berisi rincian transaksi
+
+Bisa dibagikan melalui berbagai aplikasi pesan
+
+🔐 Keamanan & Izin
+Menyesuaikan dengan versi Android terkait izin Bluetooth
+
+Memastikan keamanan saat koneksi dan pengiriman data
+
+🔄 Alur Penggunaan
+Ambil Data Transaksi
+
+Dari Firebase (jika ID transaksi tersedia)
+
+Atau dari data yang dikirim melalui Intent
+
+Tampilkan Ringkasan
+
+Semua informasi ditampilkan dalam tampilan yang rapi dan jelas
+
+Aksi yang Dapat Dilakukan
+
+🟢 Kirim Struk ke WhatsApp
+
+🔵 Cetak Struk Bluetooth
+
+🔙 Kembali ke halaman utama
+
+💼 Teknologi & Tools
+🧠 Firebase Realtime Database
+
+📡 Bluetooth Socket API
+
+⚙️ Android SDK + Kotlin Coroutines
+
+🧱 RecyclerView + BottomSheetDialog
+
+🌐 Locale Indonesia untuk format tanggal & mata uang
+
+
 
 
