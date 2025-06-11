@@ -931,5 +931,72 @@ Aksi yang Dapat Dilakukan
 🌐 Locale Indonesia untuk format tanggal & mata uang
 
 
+--------------------------------------------------------------------
+
+
+📊 Data Laporan – Bayu Laundry App
+Halaman Data Laporan memungkinkan pengguna untuk melihat ringkasan semua transaksi yang telah dilakukan. Fitur ini membantu pemilik usaha memantau performa harian, mingguan, atau bulanan secara efisien.
+
+![image](https://github.com/user-attachments/assets/9f29ebf4-18f8-4ddb-8ac4-2f58cb9441ca)
+
+
+🧾 Fitur Unggulan
+🔄 Sinkronisasi Real-time
+Mengambil data dari Firebase Realtime Database
+
+Menampilkan maksimal 100 transaksi terbaru
+
+Otomatis menampilkan transaksi terbaru di urutan teratas
+
+📋 Tampilan Ringkasan
+Setiap item laporan menampilkan:
+
+🆔 ID Transaksi
+
+🧍 Nama Pelanggan
+
+🧺 Layanan yang dipilih
+
+💵 Total pembayaran
+
+📅 Tanggal transaksi
+
+💳 Metode & Status Pembayaran
+
+❌ Notifikasi Data Kosong
+Jika tidak ada transaksi ditemukan, pengguna akan melihat pesan ramah bahwa data belum tersedia.
+
+🧠 Cara Kerja
+Aplikasi terhubung dengan node transaksi di Firebase
+
+Data transaksi diambil, diproses, dan ditampilkan di RecyclerView
+
+Jika data berhasil dimuat ➡️ tampilkan daftar
+
+Jika data gagal dimuat atau kosong ➡️ tampilkan pesan error
+
+⚙️ Teknologi Digunakan
+🧩 Android RecyclerView
+
+🔌 Firebase Realtime Database
+
+📦 Kotlin Data Class (Model)
+
+📱 ConstraintLayout & Material Design
+
+🔄 Live Update via ValueEventListener
+
+💡 Saran Pengembangan
+🔍 Tambahkan fitur pencarian berdasarkan nama pelanggan atau tanggal
+
+📅 Integrasi filter rentang waktu (mingguan/bulanan)
+
+📤 Export laporan ke PDF/Excel
+
+📈 Statistik visual seperti grafik total pemasukan
+
+🙌 Penutup
+Dengan halaman Data Laporan, manajemen transaksi di Bayu Laundry jadi lebih mudah, rapi, dan profesional. Tetap bersih, tetap efisien! 🧼📁
+
 
 
